@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABI Universe</title>
+    <title>Abishek Universe</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="th (5).jpg">
+
     <style>
         body {
             background-color: #121212;
-            color: white;
+            color: rgb(249, 249, 249);
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #1f1f1f;
+            background-color: hwb(66 26% 48%);
             padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .profile-pic {
             width: 150px;
@@ -28,8 +31,8 @@
             margin: 20px;
             padding: 20px;
         }
-        .project, .certification {
-            background-color: #1f1f1f;
+        .project, .internships{
+            background-color: #39d38e;
             padding: 15px;
             margin: 10px auto;
             width: 80%;
@@ -40,7 +43,7 @@
             background-color: #6200ea;
             color: white;
             padding: 10px 20px;
-            margin-top: 10px;
+            margin-top: 20px;
             text-decoration: none;
             border-radius: 5px;
         }
@@ -62,48 +65,114 @@
             font-size: 24px;
             margin: 0 10px;
         }
+        .contact-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .contact-button:hover {
+            background-color: #e64a19;
+        }
+        .quote-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #1f1f1f;
+            border-radius: 10px;
+        }
+        .chatbot-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #1f1f1f;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Abishek Raimand</h1>
+        <h1>Welcome To Abi Universe</h1>
         <p>AI & Data Science Enthusiast</p>
     </header>
     
     <section id="about">
-        <img src="https://avatars.githubusercontent.com/u/132043043?v=4"alt="Profile Picture" class="profile-pic">
+        <img src="https://avatars.githubusercontent.com/u/132043043?v=4" alt="Profile Picture" class="profile-pic">
         <h2>About Me</h2>
         <p>I'm passionate about AI and Data Science, working on exciting projects.</p>
+        <h3>Qualification</h3>
+        <p>Bachelor's Degree in Artificial Intelligence & Data Science</p>
     </section>
     
     <section id="projects">
         <h2>Projects</h2>
         <div class="project">
-            <h3>KDC-AIML</h3>
-            <p>Short description of the project.</p>
-            <a href="https://github.com/raimandabishek/KIDNEY-DISEASE-CLASSiFICATION" target="_blank">View on GitHub</a>
+            <h3>OCR</h3>
+            <p>To facilitate text extraction and modification, we developed a website that converts text from images into
+                documents for further editing..</p>
+            <a href="https://github.com/raimandabishek/Optical-Character-Recognition" target="_blank">View on GitHub</a>
         </div>
         <div class="project">
-            <h3>Project 2</h3>
-            <p>Short description of the project.</p>
-            <a href="https://github.com/yourusername/project2" target="_blank">View on GitHub</a>
+            <h3>KDA-RA</h3>
+            <p>To improve the diagnosis and treatment of chronic kidney disease(CKD), we developed a machine learning
+                model to classify the different stages of CKD based on patient data.</p>
+            <a href="https://github.com/raimandabishek/Kidney-Disease-Classification-Deep-Learning-Project" target="_blank">View on GitHub</a>
         </div>
     </section>
     
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="certification">DATA SCIENCE</div>
+    <section id="Internships">
+        <h2>Internships</h2>
+        <div class="certification">DATA SCIENCE-Intern</div>
+        <div class="certification">COMPUTER VISION-Intern</div>
     </section>
     
     <section id="contact">
         <h2>Contact</h2>
         <p>Email:abishekraimand@gmail.com</p>
-        <p>LinkedIn: <a href="www.linkedin.com/in/abishek-raimand"_blank">abishek</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/abishek-raimand" target="_blank">ABISHEKRAIMAND</a></p>
+        <button class="contact-button" onclick="window.location.href='mailto:your.email@example.com'">Contact Me</button>
         <div class="social-icons">
             <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
     </section>
+    
+    <section class="quote-container">
+        <h2>AI Quote of the Day</h2>
+        <p id="quote">Loading...</p>
+        <button class="contact-button" onclick="generateQuote()">New Quote</button>
+    </section>
+
+    <section class="chatbot-container">
+        <h2>Chat with Me</h2>
+        <input type="text" id="userInput" placeholder="Ask me something...">
+        <button class="contact-button" onclick="chatbotReply()">Send</button>
+        <p id="chatbotResponse"></p>
+    </section>
+
+    <script>
+        const quotes = [
+            "AI is the new electricity. - Andrew Ng",
+            "The future is AI-driven. - Sundar Pichai",
+            "Artificial intelligence will transform every industry. - Jensen Huang",
+            "AI is not a threat but a tool for innovation. - Fei-Fei Li"
+        ];
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quote").innerText = quotes[randomIndex];
+        }
+        
+        function chatbotReply() {
+            const userText = document.getElementById("userInput").value.toLowerCase();
+            let response = "I'm still learning!contact me throw Email.";
+            if (userText.includes("ai")) response = "AI stands for Artificial Intelligence!";
+            if (userText.includes("data science")) response = "Data Science helps uncover insights from data!";
+            document.getElementById("chatbotResponse").innerText = response;
+        }
+        
+        generateQuote();
+    </script>
 </body>
 </html>
